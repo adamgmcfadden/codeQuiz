@@ -1,0 +1,73 @@
+/*------------
+GLOBAL STYLING
+------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*fit all content on screen*/
+html,
+body,
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*global font and background color*/
+body {
+  font-family: sans-serif;
+  background-color: #f9fbfd;
+}
+
+/*-----------------------------------------
+STYLING AND POSITIONING FOR HEADER ELEMENTS
+-----------------------------------------*/
+/*parent element used to position on page*/
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+}
+/*font styling for "view high score"*/
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-left: 20px;
+  color: rgb(195, 90, 200);
+}
+/*remove anchor default styling*/
+a {
+  text-decoration: none;
+}
+
+/*temporary styling for top right timer*/
+h3 {
+  font-weight: normal;
+  margin-right: 20px;
+}
+
+/*---------------------------------------
+STYLING AND POSITIONING FOR MAIN ELEMENTS
+---------------------------------------*/
+/*parent element used to center on page*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*btn styling to be used throughout quiz*/
+.btn {
+  border: none;
+  background-color: darkblue;
+  border-radius: 8px;
+  color: white;
+  font-size: 22px;
+  margin-top: 16px;
+  padding: 8px 25px;
+  text-align: center;
+  cursor: pointer;
+}
