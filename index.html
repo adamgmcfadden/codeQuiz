@@ -14,14 +14,26 @@
         <h3>Time: 0</h3>
       </header>
       <section class="container" id="container">
-        <h1 class="title" id="title">Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <button class="btn start-btn" id="start-btn">Start Quiz</button>
+        <div class="initial container" id="initial">
+          <h1 class="title" id="title">Coding Quiz Challenge</h1>
+          <p>
+            Try to answer the following code-related questions within the time
+            limit. Keep in mind that incorrect answers will penalize your
+            score/time by ten seconds!
+          </p>
+          <button id="start-btn" class="start-btn btn">Start Quiz</button>
+        </div>
+        <div id="question-element" class="hidden question-style">
+          <div id="quiz">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn" id="btn-1">Answer 1</button>
+            <button class="btn" id="btn-2">Answer 2</button>
+            <button class="btn" id="btn-3">Answer 3</button>
+            <button class="btn" id="btn-4">Answer 4</button>
+          </div>
+        </div>
       </section>
     </div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

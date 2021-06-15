@@ -71,3 +71,25 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   text-align: center;
   cursor: pointer;
 }
+
+/*answer button - grid*/
+.btn-grid {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+  width: 40%;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/*hide default values for elements that don't show up right away*/
+.hidden {
+  display: none;
+}
+
+.question-style {
+  margin-top: 50px;
+}
