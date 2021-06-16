@@ -11,8 +11,8 @@ var btn2 = document.querySelector("#btn-2");
 var btn3 = document.querySelector("#btn-3");
 var btn4 = document.querySelector("#btn-4");
 
-var currentQuestionIndex = 1;
-var currentAnswerIndex = 0;
+var currentQuestionIndex = 0;
+var time = 70;
 
 /*Start quiz button is pressed - what happens...*/
 var beginQuiz = function () {
@@ -40,12 +40,55 @@ var nextQuestions = function () {
       btn4.textContent = questions[i].answers[3].text;
       correctAnswer();
       currentQuestionIndex++;
+
       return;
     }
   });
 };
 
-var correctAnswer = function () {};
+/*compares user answer to hard coded answer and returns correct/incorrect and score value*/
+var correctAnswer = function () {
+  var answer1 = questions[currentQuestionIndex].answers[0].correct;
+  btn1.onclick = function () {
+    let clickedBtn1 = true;
+    if (clickedBtn1 === true && answer1 === true) {
+      console.log("Correct");
+    } else {
+      console.log("Incorrect");
+      time -= 10;
+    }
+  };
+  var answer2 = questions[currentQuestionIndex].answers[1].correct;
+  btn2.onclick = function () {
+    let clickedBtn2 = true;
+    if (clickedBtn2 === true && answer2 === true) {
+      console.log("Correct");
+    } else {
+      console.log("Incorrect");
+      time -= 10;
+    }
+  };
+  var answer3 = questions[currentQuestionIndex].answers[2].correct;
+  btn3.onclick = function () {
+    let clickedBtn3 = true;
+    if (clickedBtn3 === true && answer3 === true) {
+      console.log("Correct");
+    } else {
+      console.log("Incorrect");
+      time -= 10;
+    }
+  };
+  var answer4 = questions[currentQuestionIndex].answers[3].correct;
+  btn4.onclick = function () {
+    let clickedBtn4 = true;
+    if (clickedBtn4 === true && answer4 === true) {
+      console.log("Correct");
+    } else {
+      console.log("Incorrect");
+      time -= 10;
+    }
+  };
+};
 
 startQuizBtn.addEventListener("click", beginQuiz);
 
