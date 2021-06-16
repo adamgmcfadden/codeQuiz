@@ -10,6 +10,8 @@ var btn1 = document.querySelector("#btn-1");
 var btn2 = document.querySelector("#btn-2");
 var btn3 = document.querySelector("#btn-3");
 var btn4 = document.querySelector("#btn-4");
+var correct = document.querySelector("#correct");
+var incorrect = document.querySelector("#incorrect");
 
 var currentQuestionIndex = 0;
 var time = 70;
@@ -39,6 +41,8 @@ var nextQuestions = function () {
       btn3.textContent = questions[i].answers[2].text;
       btn4.textContent = questions[i].answers[3].text;
       correctAnswer();
+      correct.classList.add("hidden");
+      incorrect.classList.add("hidden");
       currentQuestionIndex++;
 
       return;
@@ -53,8 +57,10 @@ var correctAnswer = function () {
     let clickedBtn1 = true;
     if (clickedBtn1 === true && answer1 === true) {
       console.log("Correct");
+      correct.classList.remove("hidden");
     } else {
       console.log("Incorrect");
+      incorrect.classList.remove("hidden");
       time -= 10;
     }
   };
@@ -63,8 +69,10 @@ var correctAnswer = function () {
     let clickedBtn2 = true;
     if (clickedBtn2 === true && answer2 === true) {
       console.log("Correct");
+      correct.classList.remove("hidden");
     } else {
       console.log("Incorrect");
+      incorrect.classList.remove("hidden");
       time -= 10;
     }
   };
@@ -73,8 +81,10 @@ var correctAnswer = function () {
     let clickedBtn3 = true;
     if (clickedBtn3 === true && answer3 === true) {
       console.log("Correct");
+      correct.classList.remove("hidden");
     } else {
       console.log("Incorrect");
+      incorrect.classList.remove("hidden");
       time -= 10;
     }
   };
@@ -83,8 +93,10 @@ var correctAnswer = function () {
     let clickedBtn4 = true;
     if (clickedBtn4 === true && answer4 === true) {
       console.log("Correct");
+      correct.classList.remove("hidden");
     } else {
       console.log("Incorrect");
+      incorrect.classList.remove("hidden");
       time -= 10;
     }
   };
