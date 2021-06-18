@@ -68,16 +68,28 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   font-size: 22px;
   margin-top: 16px;
   padding: 8px 25px;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
+  width: 255px;
 }
 
 /*answer button - grid*/
 .btn-grid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   margin: 20px 0;
-  width: 40%;
+  width: 255px;
+}
+
+.start-btn {
+  width: 150px;
+  text-align: center;
+}
+
+.submit-btn {
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .title {
@@ -92,4 +104,21 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
 
 .question-style {
   margin-top: 50px;
+}
+
+.submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.last-page-text {
+  margin-right: 0px;
+  font-size: 21px;
+}
+
+.text-area {
+  width: 60%;
+  height: 50%;
 }
