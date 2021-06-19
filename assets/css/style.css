@@ -36,7 +36,7 @@ h2 {
   font-size: 18px;
   font-weight: normal;
   margin-left: 20px;
-  color: rgb(195, 90, 200);
+  color: rgb(150, 80, 220);
 }
 /*remove anchor default styling*/
 a {
@@ -50,7 +50,7 @@ h3 {
 }
 
 /*---------------------------------------
-STYLING AND POSITIONING FOR MAIN ELEMENTS
+STYLING AND POSITIONING FOR PARENT ELEMENTS
 ---------------------------------------*/
 /*parent element used to center on page*/
 .container {
@@ -59,16 +59,30 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   align-items: center;
 }
 
+/*parent element for main content*/
 .main-container {
   width: 800px;
 }
 
+/*parent element for submit score content*/
+.submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
+/*parent element for highscore content*/
 .score-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 150px;
 }
+
+/*----------------------------------------
+STYLING AND POSITIONING FOR BUTTONS STARTS
+----------------------------------------*/
 /*btn styling to be used throughout quiz*/
 .btn {
   border: none;
@@ -82,42 +96,40 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   cursor: pointer;
   width: 255px;
 }
+/*all button hover*/
+.btn:hover {
+  background-color: rgb(150, 80, 220);
+}
 
-/*answer button - grid*/
-.btn-grid {
+/*start buttons styling and positioning*/
+.start-btn {
+  width: 150px;
+  text-align: center;
+}
+
+/*answer buttons styling and positioning*/
+.answer-btn {
   display: flex;
   flex-direction: column;
   margin: 20px 0;
   width: 255px;
 }
 
-.start-btn {
-  width: 150px;
-  text-align: center;
-}
-
+/*submit button styling and positioning*/
 .submit-btn {
   margin-bottom: 15px;
-  margin-left: 15px;
   width: 150px;
   text-align: center;
 }
 
-.high-score h2 {
-  height: auto;
-  margin-bottom: 5px;
-  margin-left: -20px;
-  background-color: rgb(206, 174, 233);
-  font-size: 20px;
-  color: black;
-}
-
+/*highscore page -button- parent element*/
 .score-btn {
   display: flex;
   height: 35px;
 }
 
-.clear-all {
+/*clear high score button styling and positioning*/
+.clear-all-btn {
   text-align: center;
   justify-content: center;
   margin-top: 0;
@@ -125,7 +137,8 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   height: 35px;
 }
 
-.go-back {
+/*load new quiz button*/
+.go-back-btn {
   text-align: center;
   width: 150px;
   margin-right: 10px;
@@ -133,38 +146,35 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   padding-top: 4px;
   height: 35px;
 }
+/*-------------------------------------
+STYLING AND POSITIONING FOR BUTTONS ENDS
+--------------------------------------*/
 
+/*---------------------------
+TEXT AND OTHER STYLING STARTS
+---------------------------*/
+/*title text - question text - high score text*/
 .title {
   font-size: 28px;
   font-weight: bold;
 }
 
-/*hide default values for elements that don't show up right away*/
-.hidden {
-  display: none;
+/*highscore display*/
+.high-score h2 {
+  height: auto;
+  margin-bottom: 5px;
+  margin-left: -20px;
+  background-color: rgba(150, 80, 220, 0.25);
+  font-size: 20px;
+  color: black;
 }
 
+/*space between question and answers*/
 .question-style {
   margin-top: 50px;
 }
 
-.submit-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-}
-
-.last-page-text {
-  margin-right: 0px;
-  font-size: 21px;
-}
-
-.text-area {
-  width: 45%;
-  height: 45%;
-}
-
+/*styling for Correct/Wrong Text*/
 .correct-wrong {
   width: 800px;
   padding-top: 10px;
@@ -172,4 +182,26 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   border-top: 3px solid grey;
   font-size: 25px;
   font-style: italic;
+}
+
+/*submit page text height*/
+.last-page-text {
+  margin-right: 0px;
+  font-size: 21px;
+}
+
+/*submit page input field*/
+.text-area {
+  width: 45%;
+  height: 27px;
+  font-size: 20px;
+  justify-content: center;
+}
+
+/*-------------
+SPECIAL EFFECTS
+-------------*/
+/*hide default values for elements - to be turned on and off dynamically*/
+.hidden {
+  display: none;
 }

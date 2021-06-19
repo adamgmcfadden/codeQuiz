@@ -1,5 +1,8 @@
 "use strict";
 
+/*---------------------------------------------------------------
+Iterate through stored items and display on high scores HTML page
+---------------------------------------------------------------*/
 function allScores() {
   var values = [],
     keys = Object.keys(localStorage),
@@ -16,6 +19,9 @@ function allScores() {
 
 allScores();
 
+/*------------------
+Clear storage button
+------------------*/
 function clearStorage() {
   localStorage.clear();
   var highScore = document.querySelector("#high-score");

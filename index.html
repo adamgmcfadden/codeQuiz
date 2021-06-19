@@ -4,16 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--link to style.css-->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Coding Quiz Challenge</title>
   </head>
   <body>
-    <div class="wrapper">
+    <div>
       <header>
-        <a href="./highScore.html"><h2>View high scores</h2></a>
+        <!--HighScore anchor that links to highScore.html-->
+        <a href="./highScore.html"><h2>View HighScores</h2></a>
+        <!--Time display with span for actual timer-->
         <h3>Time:<span id="time-rem">0</span></h3>
       </header>
+      <!--page parent element-->
       <section class="container" id="container">
+        <!--parent element for initial content-->
         <div class="initial container" id="initial">
           <h1 class="title" id="title">Coding Quiz Challenge</h1>
           <p>
@@ -21,17 +26,23 @@
             limit. Keep in mind that incorrect answers will penalize your
             score/time by ten seconds!
           </p>
+          <!--button starts quiz and timer-->
           <button id="start-btn" class="start-btn btn">Start Quiz</button>
         </div>
+        <!--main content parent element-->
         <main id="main-container" class="main-container">
+          <!--div for questions-->
           <div id="question-element" class="question-style"></div>
+          <!--div for answers-->
           <div id="answer-element" class="answer-style"></div>
+          <!--div for submit page-->
           <div id="submit-element" class="submit-style"></div>
         </main>
+        <!--div for correct/incorrect display-->
         <div id="correct-wrong"></div>
       </section>
     </div>
-
+    <!--link to script.js-->
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

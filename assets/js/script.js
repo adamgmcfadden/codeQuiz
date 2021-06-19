@@ -13,8 +13,12 @@ var submitEl = document.querySelector("#submit-element");
 var currentQuestionIndex = 0;
 var timeLeft = 70;
 
-//Start quiz button is pressed -
+/*--------------------------
+Start quiz button is pressed 
+--------------------------*/
 var beginQuiz = function () {
+  //hide welcome screen
+  initial.classList.add("hidden");
   //create div for quiz and display first question
   var quizDiv = document.createElement("div");
   quizDiv.textContent = questions[0].question;
@@ -23,7 +27,7 @@ var beginQuiz = function () {
   questionEl.appendChild(quizDiv);
   //create div for answer buttons
   var buttonDiv = document.createElement("div");
-  buttonDiv.classList.add("btn-grid");
+  buttonDiv.classList.add("answer-btn");
   buttonDiv.id = "button-div";
   answerEl.appendChild(buttonDiv);
   //create first question button
@@ -65,13 +69,13 @@ var beginQuiz = function () {
   };
   //call countdown
   countDown();
-
-  //hide welcome screen
-  initial.classList.add("hidden");
   //call next question function
   nextQuestions();
 };
-/*loads next set of questions*/
+
+/*-----------------------------------------------
+loads next set of questions when answer is picked
+-----------------------------------------------*/
 var nextQuestions = function () {
   //event listener for answer buttons
   answerEl.addEventListener("click", function () {
@@ -97,70 +101,81 @@ var nextQuestions = function () {
   });
 };
 
-/*compares user answer to hard coded answer and returns correct/incorrect and score value*/
+/*--------------------------------------------------------------------------
+Compares user answer to hard coded answer and returns correct/incorrect etc.
+--------------------------------------------------------------------------*/
+//answerCounter will end question loop went number = to questions.length
 let answerCounter = 0;
+//if first choice is picked
 var correctAnswer = function () {
   var answer1 = questions[currentQuestionIndex].answers[0].correct;
   var btn1 = document.querySelector("#btn-1");
   btn1.onclick = function () {
     let clickedBtn1 = true;
     if (clickedBtn1 === true && answer1 === true) {
-      console.log("Correct");
+      //if answer correct run displayCorrect()
       displayCorrect();
       answerCounter++;
     } else {
-      console.log("Incorrect");
+      //else run displayIncorrect()
       displayIncorrect();
       timeLeft -= 10;
       answerCounter++;
     }
   };
+  //if second choice is picked
   var answer2 = questions[currentQuestionIndex].answers[1].correct;
   var btn2 = document.querySelector("#btn-2");
   btn2.onclick = function () {
     let clickedBtn2 = true;
     if (clickedBtn2 === true && answer2 === true) {
-      console.log("Correct");
+      //if answer correct run displayCorrect()
       displayCorrect();
       answerCounter++;
     } else {
-      console.log("Incorrect");
+      //else run displayIncorrect()
       displayIncorrect();
       timeLeft -= 10;
       answerCounter++;
     }
   };
+  //if thirs choice is picked
   var answer3 = questions[currentQuestionIndex].answers[2].correct;
   var btn3 = document.querySelector("#btn-3");
   btn3.onclick = function () {
     let clickedBtn3 = true;
     if (clickedBtn3 === true && answer3 === true) {
-      console.log("Correct");
+      //if answer correct run displayCorrect()
       displayCorrect();
       answerCounter++;
     } else {
-      console.log("Incorrect");
+      //else run displayIncorrect()
       displayIncorrect();
       timeLeft -= 10;
       answerCounter++;
     }
   };
+  //if fourth choice is picked
   var answer4 = questions[currentQuestionIndex].answers[3].correct;
   var btn4 = document.querySelector("#btn-4");
   btn4.onclick = function () {
     let clickedBtn4 = true;
     if (clickedBtn4 === true && answer4 === true) {
-      console.log("Correct");
+      //if answer correct run displayCorrect()
       displayCorrect();
       answerCounter++;
     } else {
-      console.log("Incorrect");
+      //else run displayIncorrect()
       displayIncorrect();
       timeLeft -= 10;
       answerCounter++;
     }
   };
 };
+
+/*--------------------------------------
+Display Correct/Incorrect on .75s timeout
+---------------------------------------*/
 var displayCorrect = function () {
   var correctText = document.createElement("h2");
   correctText.id = "correct";
@@ -169,9 +184,8 @@ var displayCorrect = function () {
   correctWrong.appendChild(correctText);
   setTimeout(function () {
     correctText.classList.add("hidden");
-  }, 1000);
+  }, 500);
 };
-
 var displayIncorrect = function () {
   var incorrectText = document.createElement("h2");
   incorrectText.id = "incorrect";
@@ -180,10 +194,14 @@ var displayIncorrect = function () {
   correctWrong.appendChild(incorrectText);
   setTimeout(function () {
     incorrectText.classList.add("hidden");
-  }, 1000);
+  }, 500);
 };
 
+/*-------------------------
+Function that ends the Quiz
+-------------------------*/
 var endQuiz = function () {
+  //if answer counter reaches length of questions, remove question elements
   if (answerCounter === questions.length) {
     var quiz = document.querySelector("#quiz");
     var buttonDiv = document.querySelector("#button-div");
@@ -196,34 +214,45 @@ var endQuiz = function () {
     buttonDiv.removeChild(btn3);
     var btn4 = document.querySelector("#btn-4");
     buttonDiv.removeChild(btn4);
+    //logic added to backup one step and allow submit button functionality
     answerCounter--;
   }
+
+  //save final score
   var finalScore = timeRemaining.innerHTML;
+  //stop timer
   clearInterval((timeLeft = 0));
+  //------CREATE SUBMIT SCORE SCREEN-------------
+  // create div
   var lastPageDiv = document.createElement("div");
   submitEl.appendChild(lastPageDiv);
+  //create first line of text
   var allDone = document.createElement("h1");
   allDone.textContent = "All done!";
   allDone.className = "title";
   lastPageDiv.appendChild(allDone);
+  //create second line of text (score announcement)
   var report = document.createElement("h3");
   report.textContent = "Your final score is " + finalScore;
   report.className = "last-page-text";
   lastPageDiv.appendChild(report);
+  //create div (submit container)
   var entryDiv = document.createElement("div");
   entryDiv.className = "submit-container";
   submitEl.appendChild(entryDiv);
+  //create text "Enter initials"
   var enterInitials = document.createElement("h3");
   enterInitials.textContent = "Enter initials";
   enterInitials.className = "last-page-text";
   entryDiv.appendChild(enterInitials);
-  var textArea = document.createElement("textarea");
+  //create text input area
+  var textArea = document.createElement("input");
   textArea.id = "text-area";
   textArea.className = "text-area";
   entryDiv.appendChild(textArea);
-  //Display submit score button
+  //create submit score button
   var buttonAnchor = document.createElement("a");
-  buttonAnchor.href = "./highScore.html";
+
   entryDiv.appendChild(buttonAnchor);
   var button = document.createElement("input");
   button.type = "button";
@@ -231,18 +260,27 @@ var endQuiz = function () {
   button.value = "Submit";
   button.className = "btn submit-btn";
   buttonAnchor.appendChild(button);
-  //Submit button function
+  //---------SUBMIT BUTTON FUNCTION----------
   button.addEventListener("click", function () {
     if (textArea.value === "") {
+      //doesnt allow no user initials
       alert("Your initials must be entered!");
     } else {
+      //saves score to local storage
       localStorage.setItem(textArea.value, finalScore);
+      buttonAnchor.href = "./highScore.html";
     }
   });
 };
 
+/*----------------------------
+Event listener starts the quiz
+----------------------------*/
 startQuizBtn.addEventListener("click", beginQuiz);
 
+/*--------------------------------------------
+Hard coded questions and answers used for quiz
+--------------------------------------------*/
 var questions = [
   {
     question: "Commonly used data types DO Not Include:",

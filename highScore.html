@@ -7,14 +7,24 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Quiz HighScore</title>
   </head>
+  <!--parent element for all content-->
   <body class="score-container">
     <section>
       <h1 class="title">High scores</h1>
+      <!--High score display-->
       <h2 id="high-score" class="high-score">highscores</h2>
+      <!--buttons parent element-->
       <div class="score-btn">
-        <a href="./index.html"><button class="btn go-back">Go back</button></a>
-        <button id="clear-all" class="btn clear-all">Clear high scores</button>
+        <!--button that serves as anchor to index.html-->
+        <a href="./index.html"
+          ><button class="btn go-back-btn">Go back</button></a
+        >
+        <!--button that clear localStorage(highscores)-->
+        <button id="clear-all" class="btn clear-all-btn">
+          Clear high scores
+        </button>
       </div>
+      <!--link to score.js-->
       <script src="./assets/js/score.js"></script>
     </section>
   </body>
