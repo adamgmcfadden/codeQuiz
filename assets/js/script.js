@@ -3,9 +3,12 @@
 /*querySelector to control HTML elements in JS*/
 var initial = document.querySelector("#initial");
 var startQuizBtn = document.querySelector("#start-btn");
-var questionsEl = document.querySelector("#question-element");
+var questionEl = document.querySelector("#question-element");
+var answerEl = document.querySelector("#answer-element");
 var timeRemaining = document.querySelector("#time-rem");
 var correctWrong = document.querySelector("#correct-wrong");
+var mainContainer = document.querySelector("#main-container");
+var submitEl = document.querySelector("#submit-element");
 
 var currentQuestionIndex = 0;
 var timeLeft = 70;
@@ -16,11 +19,11 @@ var beginQuiz = function () {
   quizDiv.textContent = questions[0].question;
   quizDiv.classList.add("title");
   quizDiv.id = "quiz";
-  questionsEl.appendChild(quizDiv);
+  questionEl.appendChild(quizDiv);
   var buttonDiv = document.createElement("div");
   buttonDiv.classList.add("btn-grid");
   buttonDiv.id = "button-div";
-  questionsEl.appendChild(buttonDiv);
+  answerEl.appendChild(buttonDiv);
   var answerBtn1 = document.createElement("button");
   answerBtn1.textContent = questions[0].answers[0].text;
   answerBtn1.className = "btn";
@@ -45,7 +48,7 @@ var beginQuiz = function () {
   //Start Timer
   var countDown = function () {
     setInterval(function () {
-      if (timeLeft <= 0) {
+      if (timeLeft <= 0 || answerCounter === questions.length) {
         clearInterval((timeLeft = 0));
       }
       timeRemaining.innerHTML = timeLeft;
@@ -61,7 +64,7 @@ var beginQuiz = function () {
 };
 /*loads next set of questions*/
 var nextQuestions = function () {
-  questionsEl.addEventListener("click", function () {
+  answerEl.addEventListener("click", function () {
     for (let i = currentQuestionIndex; i < questions.length; i++) {
       var quiz = document.querySelector("#quiz");
       quiz.textContent = questions[i].question;
@@ -79,33 +82,6 @@ var nextQuestions = function () {
       return;
     }
     endQuiz();
-    var finalScore = timeRemaining.innerHTML;
-    var lastPageDiv = document.createElement("div");
-    questionsEl.appendChild(lastPageDiv);
-    var allDone = document.createElement("h1");
-    allDone.textContent = "All done!";
-    allDone.className = "title";
-    lastPageDiv.appendChild(allDone);
-    var report = document.createElement("h3");
-    report.textContent = "Your final score is " + finalScore;
-    report.className = "last-page-text";
-    lastPageDiv.appendChild(report);
-    var entryDiv = document.createElement("div");
-    entryDiv.className = "submit-container";
-    questionsEl.appendChild(entryDiv);
-    var enterInitials = document.createElement("h3");
-    enterInitials.textContent = "Enter initials";
-    enterInitials.className = "last-page-text";
-    entryDiv.appendChild(enterInitials);
-    var textArea = document.createElement("textarea");
-    textArea.className = "text-area";
-    entryDiv.appendChild(textArea);
-    var button = document.createElement("input");
-    button.type = "button";
-    button.id = "submit";
-    button.value = "Submit";
-    button.className = "btn submit-btn";
-    entryDiv.appendChild(button);
   });
 };
 
@@ -176,8 +152,8 @@ var correctAnswer = function () {
 var displayCorrect = function () {
   var correctText = document.createElement("h2");
   correctText.id = "correct";
-  correctText.className = "correct";
-  correctText.textContent = "Correct!!";
+  correctText.className = "correct-wrong";
+  correctText.textContent = "Correct!";
   correctWrong.appendChild(correctText);
   setTimeout(function () {
     correctText.classList.add("hidden");
@@ -187,20 +163,20 @@ var displayCorrect = function () {
 var displayIncorrect = function () {
   var incorrectText = document.createElement("h2");
   incorrectText.id = "incorrect";
-  incorrectText.className = "incorrect";
-  incorrectText.textContent = "Incorrect!!";
+  incorrectText.className = "correct-wrong";
+  incorrectText.textContent = "Wrong!";
   correctWrong.appendChild(incorrectText);
   setTimeout(function () {
     incorrectText.classList.add("hidden");
   }, 1000);
 };
-
+let obj = {};
+let array = [];
 var endQuiz = function () {
   if (answerCounter === questions.length) {
-    console.log("Game over");
-    var buttonDiv = document.querySelector("#button-div");
     var quiz = document.querySelector("#quiz");
-    questionsEl.removeChild(quiz);
+    var buttonDiv = document.querySelector("#button-div");
+    questionEl.removeChild(quiz);
     var btn1 = document.querySelector("#btn-1");
     buttonDiv.removeChild(btn1);
     var btn2 = document.querySelector("#btn-2");
@@ -209,7 +185,46 @@ var endQuiz = function () {
     buttonDiv.removeChild(btn3);
     var btn4 = document.querySelector("#btn-4");
     buttonDiv.removeChild(btn4);
+    answerCounter--;
   }
+  var finalScore = timeRemaining.innerHTML;
+
+  var lastPageDiv = document.createElement("div");
+  submitEl.appendChild(lastPageDiv);
+  var allDone = document.createElement("h1");
+  allDone.textContent = "All done!";
+  allDone.className = "title";
+  lastPageDiv.appendChild(allDone);
+  var report = document.createElement("h3");
+  report.textContent = "Your final score is " + finalScore;
+  report.className = "last-page-text";
+  lastPageDiv.appendChild(report);
+  var entryDiv = document.createElement("div");
+  entryDiv.className = "submit-container";
+  submitEl.appendChild(entryDiv);
+  var enterInitials = document.createElement("h3");
+  enterInitials.textContent = "Enter initials";
+  enterInitials.className = "last-page-text";
+  entryDiv.appendChild(enterInitials);
+  var textArea = document.createElement("textarea");
+  textArea.id = "text-area";
+  textArea.className = "text-area";
+  entryDiv.appendChild(textArea);
+  //Display submit score button
+  var button = document.createElement("input");
+  button.type = "button";
+  button.id = "submit";
+  button.value = "Submit";
+  button.className = "btn submit-btn";
+  entryDiv.appendChild(button);
+  //Submit button function
+  button.addEventListener("click", function () {
+    if (textArea.value === "") {
+      alert("Your initials must be entered!");
+    } else {
+      localStorage.setItem(textArea.value, finalScore);
+    }
+  });
 };
 
 startQuizBtn.addEventListener("click", beginQuiz);

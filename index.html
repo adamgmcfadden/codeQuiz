@@ -10,7 +10,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="#"><h2>View high scores</h2></a>
+        <a href="./highScore.html"><h2>View high scores</h2></a>
         <h3>Time:<span id="time-rem">0</span></h3>
       </header>
       <section class="container" id="container">
@@ -23,8 +23,12 @@
           </p>
           <button id="start-btn" class="start-btn btn">Start Quiz</button>
         </div>
-        <div id="question-element" class="question-style"></div>
-        <div id="correct-wrong" class="correct-wrong"></div>
+        <main id="main-container" class="main-container">
+          <div id="question-element" class="question-style"></div>
+          <div id="answer-element" class="answer-style"></div>
+          <div id="submit-element" class="submit-style"></div>
+        </main>
+        <div id="correct-wrong"></div>
       </section>
     </div>
 
