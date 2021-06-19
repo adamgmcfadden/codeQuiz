@@ -268,7 +268,7 @@ var endQuiz = function () {
     } else {
       //saves score to local storage
       localStorage.setItem(textArea.value, finalScore);
-      buttonAnchor.href = "./highScore.html";
+      buttonAnchor.href = "./assets/highScore.html";
     }
   });
 };
