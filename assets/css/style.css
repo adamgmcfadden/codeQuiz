@@ -11,15 +11,15 @@ GLOBAL STYLING
 html,
 body,
 .wrapper {
-  height: 100%;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 /*global font and background color*/
 body {
-  font-family: sans-serif;
   background-color: #f9fbfd;
+  font-family: sans-serif;
 }
 
 /*-----------------------------------------
@@ -27,16 +27,16 @@ STYLING AND POSITIONING FOR HEADER ELEMENTS
 -----------------------------------------*/
 /*parent element used to position on page*/
 header {
+  margin-top: 3px;
   display: flex;
   justify-content: space-between;
-  margin-top: 3px;
 }
 /*font styling for "view high score"*/
 h2 {
-  font-size: 18px;
-  font-weight: normal;
   margin-left: 20px;
   color: rgb(150, 80, 220);
+  font-size: 18px;
+  font-weight: normal;
 }
 /*remove anchor default styling*/
 a {
@@ -45,8 +45,8 @@ a {
 
 /*temporary styling for top right timer*/
 h3 {
-  font-weight: normal;
   margin-right: 20px;
+  font-weight: normal;
 }
 
 /*---------------------------------------
@@ -66,18 +66,18 @@ STYLING AND POSITIONING FOR PARENT ELEMENTS
 
 /*parent element for submit score content*/
 .submit-container {
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
 }
 
 /*parent element for highscore content*/
 .score-container {
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
 }
 
 /*----------------------------------------
@@ -85,16 +85,14 @@ STYLING AND POSITIONING FOR BUTTONS STARTS
 ----------------------------------------*/
 /*btn styling to be used throughout quiz*/
 .btn {
-  border: none;
-  background-color: darkblue;
-  border-radius: 8px;
-  color: white;
-  font-size: 22px;
   margin-top: 16px;
-  padding: 8px 25px;
+  border-radius: 8px;
+  height: 33px;
+  background-color: darkblue;
+  color: white;
+  font-size: 20px;
   text-align: left;
   cursor: pointer;
-  width: 255px;
 }
 /*all button hover*/
 .btn:hover {
@@ -103,16 +101,16 @@ STYLING AND POSITIONING FOR BUTTONS STARTS
 
 /*start buttons styling and positioning*/
 .start-btn {
-  width: 150px;
+  width: 130px;
   text-align: center;
 }
 
 /*answer buttons styling and positioning*/
 .answer-btn {
+  margin: 20px 0;
+  width: 250px;
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
-  width: 255px;
 }
 
 /*submit button styling and positioning*/
@@ -124,27 +122,25 @@ STYLING AND POSITIONING FOR BUTTONS STARTS
 
 /*highscore page -button- parent element*/
 .score-btn {
-  display: flex;
   height: 35px;
+  display: flex;
 }
 
 /*clear high score button styling and positioning*/
 .clear-all-btn {
+  margin-top: 0;
+  height: 35px;
   text-align: center;
   justify-content: center;
-  margin-top: 0;
-  padding-top: 4px;
-  height: 35px;
 }
 
 /*load new quiz button*/
 .go-back-btn {
-  text-align: center;
-  width: 150px;
-  margin-right: 10px;
   margin-top: 0;
-  padding-top: 4px;
+  margin-right: 10px;
   height: 35px;
+  width: 150px;
+  text-align: center;
 }
 /*-------------------------------------
 STYLING AND POSITIONING FOR BUTTONS ENDS
@@ -159,16 +155,6 @@ TEXT AND OTHER STYLING STARTS
   font-weight: bold;
 }
 
-/*highscore display*/
-.high-score h2 {
-  height: auto;
-  margin-bottom: 5px;
-  margin-left: -20px;
-  background-color: rgba(150, 80, 220, 0.25);
-  font-size: 20px;
-  color: black;
-}
-
 /*space between question and answers*/
 .question-style {
   margin-top: 50px;
@@ -176,10 +162,10 @@ TEXT AND OTHER STYLING STARTS
 
 /*styling for Correct/Wrong Text*/
 .correct-wrong {
-  width: 800px;
-  padding-top: 10px;
-  color: grey;
   border-top: 3px solid grey;
+  padding-top: 10px;
+  width: 800px;
+  color: grey;
   font-size: 25px;
   font-style: italic;
 }
@@ -192,10 +178,19 @@ TEXT AND OTHER STYLING STARTS
 
 /*submit page input field*/
 .text-area {
-  width: 45%;
   height: 27px;
+  width: 45%;
   font-size: 20px;
   justify-content: center;
+}
+
+/*highscore display*/
+.high-score h2 {
+  margin-bottom: 5px;
+  margin-left: -20px;
+  background-color: rgba(150, 80, 220, 0.25);
+  color: black;
+  font-size: 20px;
 }
 
 /*-------------
