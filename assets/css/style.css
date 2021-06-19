@@ -67,7 +67,7 @@ STYLING AND POSITIONING FOR MAIN ELEMENTS
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-top: 150px;
 }
 /*btn styling to be used throughout quiz*/
 .btn {

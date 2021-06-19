@@ -13,32 +13,38 @@ var submitEl = document.querySelector("#submit-element");
 var currentQuestionIndex = 0;
 var timeLeft = 70;
 
-//Start quiz button is pressed - what happens...
+//Start quiz button is pressed -
 var beginQuiz = function () {
+  //create div for quiz and display first question
   var quizDiv = document.createElement("div");
   quizDiv.textContent = questions[0].question;
   quizDiv.classList.add("title");
   quizDiv.id = "quiz";
   questionEl.appendChild(quizDiv);
+  //create div for answer buttons
   var buttonDiv = document.createElement("div");
   buttonDiv.classList.add("btn-grid");
   buttonDiv.id = "button-div";
   answerEl.appendChild(buttonDiv);
+  //create first question button
   var answerBtn1 = document.createElement("button");
   answerBtn1.textContent = questions[0].answers[0].text;
   answerBtn1.className = "btn";
   answerBtn1.id = "btn-1";
   buttonDiv.appendChild(answerBtn1);
+  //create second question button
   var answerBtn2 = document.createElement("button");
   answerBtn2.textContent = questions[0].answers[1].text;
   answerBtn2.className = "btn";
   answerBtn2.id = "btn-2";
   buttonDiv.appendChild(answerBtn2);
+  //create third question button
   var answerBtn3 = document.createElement("button");
   answerBtn3.textContent = questions[0].answers[2].text;
   answerBtn3.className = "btn";
   answerBtn3.id = "btn-3";
   buttonDiv.appendChild(answerBtn3);
+  //create fourth question button
   var answerBtn4 = document.createElement("button");
   answerBtn4.textContent = questions[0].answers[3].text;
   answerBtn4.className = "btn";
@@ -48,23 +54,28 @@ var beginQuiz = function () {
   //Start Timer
   var countDown = function () {
     setInterval(function () {
+      //prevent timer from continuing into negatives
       if (timeLeft <= 0 || answerCounter === questions.length) {
         clearInterval((timeLeft = 0));
       }
+      //remove one second from timeLeft every second
       timeRemaining.innerHTML = timeLeft;
       timeLeft -= 1;
     }, 1000);
   };
+  //call countdown
   countDown();
 
   //hide welcome screen
   initial.classList.add("hidden");
-  //unhide initial question and answers
+  //call next question function
   nextQuestions();
 };
 /*loads next set of questions*/
 var nextQuestions = function () {
+  //event listener for answer buttons
   answerEl.addEventListener("click", function () {
+    //iterates through hard coded questions/answers and displays them in order
     for (let i = currentQuestionIndex; i < questions.length; i++) {
       var quiz = document.querySelector("#quiz");
       quiz.textContent = questions[i].question;
@@ -76,11 +87,12 @@ var nextQuestions = function () {
       btn3.textContent = questions[i].answers[2].text;
       var btn4 = document.querySelector("#btn-4");
       btn4.textContent = questions[i].answers[3].text;
+      // call correct answer function
       correctAnswer();
       currentQuestionIndex++;
-
       return;
     }
+    // call function to end quiz and go to submit page
     endQuiz();
   });
 };
@@ -170,8 +182,7 @@ var displayIncorrect = function () {
     incorrectText.classList.add("hidden");
   }, 1000);
 };
-let obj = {};
-let array = [];
+
 var endQuiz = function () {
   if (answerCounter === questions.length) {
     var quiz = document.querySelector("#quiz");
@@ -188,7 +199,7 @@ var endQuiz = function () {
     answerCounter--;
   }
   var finalScore = timeRemaining.innerHTML;
-
+  clearInterval((timeLeft = 0));
   var lastPageDiv = document.createElement("div");
   submitEl.appendChild(lastPageDiv);
   var allDone = document.createElement("h1");
@@ -211,12 +222,15 @@ var endQuiz = function () {
   textArea.className = "text-area";
   entryDiv.appendChild(textArea);
   //Display submit score button
+  var buttonAnchor = document.createElement("a");
+  buttonAnchor.href = "./highScore.html";
+  entryDiv.appendChild(buttonAnchor);
   var button = document.createElement("input");
   button.type = "button";
   button.id = "submit";
   button.value = "Submit";
   button.className = "btn submit-btn";
-  entryDiv.appendChild(button);
+  buttonAnchor.appendChild(button);
   //Submit button function
   button.addEventListener("click", function () {
     if (textArea.value === "") {
