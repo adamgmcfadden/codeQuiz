@@ -14,7 +14,12 @@
 - CSS
 - JavaScript
 
-## Screenshot
+## Screenshots
+
+![screenshot - first page](https://user-images.githubusercontent.com/83710803/122648331-d7717000-d0f6-11eb-9bc7-90f9e7156833.png)
+![screenshot-questions](https://user-images.githubusercontent.com/83710803/122648333-dd675100-d0f6-11eb-9127-c6c3cf46c4f7.png)
+![screenshot - submit page](https://user-images.githubusercontent.com/83710803/122648335-dfc9ab00-d0f6-11eb-887e-7ee7b3a97c58.png)
+![screenshot - highscore](https://user-images.githubusercontent.com/83710803/122648336-e1936e80-d0f6-11eb-8c5c-bb757bfa112c.png)
 
 ## Website
 
