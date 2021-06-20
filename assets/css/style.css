@@ -14,6 +14,7 @@ body,
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 
 /*global font and background color*/
@@ -49,6 +50,9 @@ h3 {
   font-weight: normal;
 }
 
+p {
+  text-align: center;
+}
 /*---------------------------------------
 STYLING AND POSITIONING FOR PARENT ELEMENTS
 ---------------------------------------*/
@@ -61,12 +65,13 @@ STYLING AND POSITIONING FOR PARENT ELEMENTS
 
 /*parent element for main content*/
 .main-container {
-  width: 800px;
+  width: 100%;
+  margin-left: 50%;
 }
 
 /*parent element for submit score content*/
 .submit-container {
-  width: 80%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -166,6 +171,7 @@ TEXT AND OTHER STYLING STARTS
 /*space between question and answers*/
 .question-style {
   margin-top: 50px;
+  width: 75%;
 }
 
 /*styling for Correct/Wrong Text*/
@@ -187,7 +193,7 @@ TEXT AND OTHER STYLING STARTS
 /*submit page input field*/
 .text-area {
   height: 27px;
-  width: 45%;
+  width: 300px;
   font-size: 20px;
   justify-content: center;
 }
@@ -205,4 +211,13 @@ SPECIAL EFFECTS
 /*hide default values for elements - to be turned on and off dynamically*/
 .hidden {
   display: none;
+}
+
+/*media query for smaller desktop screen and smaller*/
+@media screen and (max-width: 900px) {
+  /*header nav button re-positioning*/
+  /*parent element for submit score content*/
+  .submit-container {
+    flex-wrap: wrap;
+  }
 }
