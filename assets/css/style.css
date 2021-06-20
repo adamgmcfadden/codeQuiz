@@ -186,7 +186,6 @@ TEXT AND OTHER STYLING STARTS
 
 /*highscore display*/
 .high-score h2 {
-  margin-bottom: 5px;
   margin-left: -20px;
   background-color: rgba(150, 80, 220, 0.25);
   color: black;

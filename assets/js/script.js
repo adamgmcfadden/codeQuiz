@@ -54,33 +54,34 @@ var beginQuiz = function () {
   answerBtn4.className = "btn";
   answerBtn4.id = "btn-4";
   buttonDiv.appendChild(answerBtn4);
+  //used to check answers loaded with start button
+  correctAnswer1();
 
-  //Start Timer
-  var countDown = function () {
-    setInterval(function () {
-      //prevent timer from continuing into negatives
-      if (timeLeft <= 0 || answerCounter === questions.length) {
-        clearInterval((timeLeft = 0));
-      }
-      //remove one second from timeLeft every second
-      timeRemaining.innerHTML = timeLeft;
-      timeLeft -= 1;
-    }, 1000);
-  };
-  //call countdown
-  countDown();
   //call next question function
   nextQuestions();
+
+  /*-----------------
+Start and end timer
+------------------*/
+  var timer = setInterval(function () {
+    //prevent timer from continuing into negatives
+    if (timeLeft <= 0 || answerCounter === questions.length) {
+      clearInterval(timer);
+      timeLeft = 0;
+      endQuiz();
+    }
+
+    //remove one second from timeLeft every second
+    timeRemaining.innerHTML = timeLeft;
+    timeLeft -= 1;
+  }, 1000);
 };
 
-/*-----------------------------------------------
-loads next set of questions when answer is picked
------------------------------------------------*/
 var nextQuestions = function () {
   //event listener for answer buttons
   answerEl.addEventListener("click", function () {
     //iterates through hard coded questions/answers and displays them in order
-    for (let i = currentQuestionIndex; i < questions.length; i++) {
+    for (let i = currentQuestionIndex + 1; i < questions.length; i++) {
       var quiz = document.querySelector("#quiz");
       quiz.textContent = questions[i].question;
       var btn1 = document.querySelector("#btn-1");
@@ -91,24 +92,20 @@ var nextQuestions = function () {
       btn3.textContent = questions[i].answers[2].text;
       var btn4 = document.querySelector("#btn-4");
       btn4.textContent = questions[i].answers[3].text;
-      // call correct answer function
-      correctAnswer();
+      //used to check answers loaded in for loop in nextquestion()
+      correctAnswer2();
       currentQuestionIndex++;
+
       return;
     }
-    // call function to end quiz and go to submit page
-    endQuiz();
   });
 };
 
 /*--------------------------------------------------------------------------
 Compares user answer to hard coded answer and returns correct/incorrect etc.
 --------------------------------------------------------------------------*/
-//answerCounter will end question loop went number = to questions.length
-let answerCounter = 0;
-//if first choice is picked
-var correctAnswer = function () {
-  var answer1 = questions[currentQuestionIndex].answers[0].correct;
+var correctAnswer1 = function () {
+  var answer1 = questions[0].answers[0].correct;
   var btn1 = document.querySelector("#btn-1");
   btn1.onclick = function () {
     let clickedBtn1 = true;
@@ -124,7 +121,7 @@ var correctAnswer = function () {
     }
   };
   //if second choice is picked
-  var answer2 = questions[currentQuestionIndex].answers[1].correct;
+  var answer2 = questions[0].answers[1].correct;
   var btn2 = document.querySelector("#btn-2");
   btn2.onclick = function () {
     let clickedBtn2 = true;
@@ -140,7 +137,7 @@ var correctAnswer = function () {
     }
   };
   //if thirs choice is picked
-  var answer3 = questions[currentQuestionIndex].answers[2].correct;
+  var answer3 = questions[0].answers[2].correct;
   var btn3 = document.querySelector("#btn-3");
   btn3.onclick = function () {
     let clickedBtn3 = true;
@@ -156,7 +153,76 @@ var correctAnswer = function () {
     }
   };
   //if fourth choice is picked
-  var answer4 = questions[currentQuestionIndex].answers[3].correct;
+  var answer4 = questions[0].answers[3].correct;
+  var btn4 = document.querySelector("#btn-4");
+  btn4.onclick = function () {
+    let clickedBtn4 = true;
+    if (clickedBtn4 === true && answer4 === true) {
+      //if answer correct run displayCorrect()
+      displayCorrect();
+      answerCounter++;
+    } else {
+      //else run displayIncorrect()
+      displayIncorrect();
+      timeLeft -= 10;
+      answerCounter++;
+    }
+  };
+};
+
+//answerCounter will end question loop went number = to questions.length
+let answerCounter = 0;
+//if first choice is picked
+var correctAnswer2 = function () {
+  var answer1 = questions[currentQuestionIndex + 1].answers[0].correct;
+  var btn1 = document.querySelector("#btn-1");
+  btn1.onclick = function () {
+    let clickedBtn1 = true;
+    if (clickedBtn1 === true && answer1 === true) {
+      //if answer correct run displayCorrect()
+      displayCorrect();
+      answerCounter++;
+    } else {
+      //else run displayIncorrect()
+      displayIncorrect();
+      timeLeft -= 10;
+      answerCounter++;
+    }
+  };
+  //if second choice is picked
+  var answer2 = questions[currentQuestionIndex + 1].answers[1].correct;
+  var btn2 = document.querySelector("#btn-2");
+  btn2.onclick = function () {
+    let clickedBtn2 = true;
+    if (clickedBtn2 === true && answer2 === true) {
+      //if answer correct run displayCorrect()
+      displayCorrect();
+      answerCounter++;
+    } else {
+      //else run displayIncorrect()
+      displayIncorrect();
+      timeLeft -= 10;
+      answerCounter++;
+    }
+  };
+  //if thirs choice is picked
+  var answer3 = questions[currentQuestionIndex + 1].answers[2].correct;
+  var btn3 = document.querySelector("#btn-3");
+  btn3.onclick = function () {
+    let clickedBtn3 = true;
+    if (clickedBtn3 === true && answer3 === true) {
+      //if answer correct run displayCorrect()
+      displayCorrect();
+      answerCounter++;
+    } else {
+      //else run displayIncorrect()
+      displayIncorrect();
+      timeLeft -= 10;
+      answerCounter++;
+    }
+  };
+  //if fourth choice is picked
+  var answer4 = questions[currentQuestionIndex + 1].answers[3].correct;
   var btn4 = document.querySelector("#btn-4");
   btn4.onclick = function () {
     let clickedBtn4 = true;
@@ -201,29 +267,21 @@ var displayIncorrect = function () {
 Function that ends the Quiz
 -------------------------*/
 var endQuiz = function () {
-  //if answer counter reaches length of questions, remove question elements
-  if (answerCounter === questions.length) {
-    var quiz = document.querySelector("#quiz");
-    var buttonDiv = document.querySelector("#button-div");
-    questionEl.removeChild(quiz);
-    var btn1 = document.querySelector("#btn-1");
-    buttonDiv.removeChild(btn1);
-    var btn2 = document.querySelector("#btn-2");
-    buttonDiv.removeChild(btn2);
-    var btn3 = document.querySelector("#btn-3");
-    buttonDiv.removeChild(btn3);
-    var btn4 = document.querySelector("#btn-4");
-    buttonDiv.removeChild(btn4);
-    //logic added to backup one step and allow submit button functionality
-    answerCounter--;
-  }
+  var quiz = document.querySelector("#quiz");
+  var buttonDiv = document.querySelector("#button-div");
+  questionEl.removeChild(quiz);
+  var btn1 = document.querySelector("#btn-1");
+  buttonDiv.removeChild(btn1);
+  var btn2 = document.querySelector("#btn-2");
+  buttonDiv.removeChild(btn2);
+  var btn3 = document.querySelector("#btn-3");
+  buttonDiv.removeChild(btn3);
+  var btn4 = document.querySelector("#btn-4");
+  buttonDiv.removeChild(btn4);
 
   //save final score
   var finalScore = timeRemaining.innerHTML;
-  //stop timer
-  clearInterval((timeLeft = 0));
   //------CREATE SUBMIT SCORE SCREEN-------------
-  // create div
   var lastPageDiv = document.createElement("div");
   submitEl.appendChild(lastPageDiv);
   //create first line of text
@@ -233,7 +291,7 @@ var endQuiz = function () {
   lastPageDiv.appendChild(allDone);
   //create second line of text (score announcement)
   var report = document.createElement("h3");
-  report.textContent = "Your final score is " + finalScore;
+  report.textContent = "Your final score is " + (finalScore - 1);
   report.className = "last-page-text";
   lastPageDiv.appendChild(report);
   //create div (submit container)

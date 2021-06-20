@@ -4,19 +4,23 @@
 Iterate through stored items and display on high scores HTML page
 ---------------------------------------------------------------*/
 function allScores() {
-  var values = [],
-    keys = Object.keys(localStorage),
-    i = keys.length;
+  var values = Object.values(localStorage);
+  var keyItem = Object.keys(localStorage);
+  console.log(keyItem.length);
 
-  while (i--) {
-    values.push(localStorage.getItem(keys[i]));
+  for (let i = 0; i < keyItem.length; i++) {
+    var highScore = document.querySelector("#high-score");
+    console.log(keyItem[i]);
+    highScore.innerHTML +=
+      "<h2 id='high-score'class='high-score'>" +
+      "Initials: " +
+      keyItem[i] +
+      " - Score: " +
+      values[i] +
+      "</br>" +
+      "</h2>";
   }
-  console.log(keys, values);
-  var highScore = document.querySelector("#high-score");
-  highScore.innerHTML =
-    "<h2>" + [i] + ".  " + keys + ":  SCORE = " + values + "</h2>";
 }
-
 allScores();
 
 /*------------------
