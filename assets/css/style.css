@@ -79,7 +79,15 @@ STYLING AND POSITIONING FOR PARENT ELEMENTS
   flex-direction: column;
   align-items: center;
 }
+/*parent element for answer button*/
+.answer-style {
+  width: 200px;
+}
 
+/*parent element for highscore area*/
+.high-score-parent {
+  background-color: rgba(150, 80, 220, 0.25);
+}
 /*----------------------------------------
 STYLING AND POSITIONING FOR BUTTONS STARTS
 ----------------------------------------*/
@@ -187,7 +195,6 @@ TEXT AND OTHER STYLING STARTS
 /*highscore display*/
 .high-score h2 {
   margin-left: -20px;
-  background-color: rgba(150, 80, 220, 0.25);
   color: black;
   font-size: 20px;
 }
