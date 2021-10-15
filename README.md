@@ -1,12 +1,8 @@
-# Coding Quiz Challenge
-
-## codeQuiz-challenge
-
-- Project - Coding Challenge #4 - Coding Quiz
+# Coding Quiz
 
 ## Purpose
 
-- A website that takes a user through a set of multiple choice code-related questions where their score/time is penalized for every incorrect answer. The user then submits their initials/score.
+A website that takes a user through a set of multiple choice code-related questions where their score/time is penalized for every incorrect answer. The user then submits their initials/score.
 
 ## Built with
 
@@ -34,15 +30,6 @@ https://adamgmcfadden.github.io/codeQuiz-challenge/
 
 - All code provided by Adam Girard-McFadden
 - A given mock-up was provided by Carleton University
-
-## Assignment Description:
-
-- When user "clicks" Start Button, the timer starts and user is presented with the first multiple choice question.
-- When the user picks their answers, the user is presented with the next question.
-- Every incorrect answer subtracts 10 seconds from the time.
-- The quiz is over when all questions are answered or timer reaches 0.
-- When the game is over, the user can save their initials and score.
-- Create Quality README.
 
 ## Website Description:
 
